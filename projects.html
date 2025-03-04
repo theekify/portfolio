@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - Theekshana Akalanka</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .projects-page {
+            padding: 8rem 2rem 5rem;
+        }
+        
+        .projects-page-header {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+        
+        .projects-page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .projects-page-header p {
+            color: #4b5563;
+            max-width: 600px;
+        }
+        
+        .projects-page-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .projects-page-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .projects-page-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html#home">HOME</a></li>
+                <li><a href="index.html#about">ABOUT</a></li>
+                <li><a href="index.html#projects">PROJECTS</a></li>
+                <li><a href="index.html#skills">SKILLS</a></li>
+                <li><a href="index.html#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="projects-page">
+        <div class="projects-page-header">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <h1>All Projects</h1>
+            <p>Here's a comprehensive collection of all my projects, showcasing my skills and experience in software development.</p>
+        </div>
+        
+        <div class="projects-page-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/333/FFF?text=Project+1" alt="Project 1">
+                </div>
+                <div class="project-content">
+                    <h3>Project 1</h3>
+                    <p>A brief description of your project goes here. Explain what it does and what technologies you used.</p>
+                    <a href="project-detail.html" class="btn secondary-btn project-btn">
+                        See More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/333/FFF?text=Project+2" alt="Project 2">
+                </div>
+                <div class="project-content">
+                    <h3>Project 2</h3>
+                    <p>A brief description of your project goes here. Explain what it does and what technologies you used.</p>
+                    <a href="project-detail.html" class="btn secondary-btn project-btn">
+                        See More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/333/FFF?text=Project+3" alt="Project 3">
+                </div>
+                <div class="project-content">
+                    <h3>Project 3</h3>
+                    <p>A brief description of your project goes here. Explain what it does and what technologies you used.</p>
+                    <a href="project-detail.html" class="btn secondary-btn project-btn">
+                        See More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/333/FFF?text=Project+4" alt="Project 4">
+                </div>
+                <div class="project-content">
+                    <h3>Project 4</h3>
+                    <p>A brief description of your project goes here. Explain what it does and what technologies you used.</p>
+                    <a href="project-detail.html" class="btn secondary-btn project-btn">
+                        See More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/333/FFF?text=Project+5" alt="Project 5">
+                </div>
+                <div class="project-content">
+                    <h3>Project 5</h3>
+                    <p>A brief description of your project goes here. Explain what it does and what technologies you used.</p>
+                    <a href="project-detail.html" class="btn secondary-btn project-btn">
+                        See More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/333/FFF?text=Project+6" alt="Project 6">
+                </div>
+                <div class="project-content">
+                    <h3>Project 6</h3>
+                    <p>A brief description of your project goes here. Explain what it does and what technologies you used.</p>
+                    <a href="project-detail.html" class="btn secondary-btn project-btn">
+                        See More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
