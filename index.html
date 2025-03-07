@@ -19,14 +19,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Particle background -->
+    <div id="particles-js"></div>
+    
+    <!-- Custom cursor elements -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Progress indicator -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#projects">PROJECTS</a></li>
-                <li><a href="#skills">SKILLS</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#home" class="nav-item">HOME</a></li>
+                <li><a href="#about" class="nav-item">ABOUT</a></li>
+                <li><a href="#projects" class="nav-item">PROJECTS</a></li>
+                <li><a href="#skills" class="nav-item">SKILLS</a></li>
+                <li><a href="#contact" class="nav-item">CONTACT</a></li>
             </ul>
         </nav>
     </header>
@@ -36,143 +48,309 @@
         <section id="home" class="home-section">
             <div class="home-content">
                 <div class="home-text">
-                    <h1>Hi! I'm <br>Theekshana <br>Akalanka.</h1>
-                    <p>Software Engineering undergraduate passionate about learning and building things for the web.</p>
+                    <h1 class="animate-text">Hi! I'm <br>Theekshana <br>Akalanka.</h1>
+                    <p class="animate-text-delay">Software Engineering undergraduate passionate about learning and building things for the web.</p>
                     
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn primary-btn">
-                            View my work
+                    <div class="cta-buttons animate-text-delay-2">
+                        <a href="#projects" class="btn primary-btn magnetic-button">
+                            <span class="btn-text">View my work</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="#" class="btn secondary-btn">Resume</a>
+                        <a href="#" class="btn secondary-btn magnetic-button">
+                            <span class="btn-text">Resume</span>
+                        </a>
                     </div>
                     
-                    <div class="social-icons">
-                        <a href="https://github.com/theekify"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/theek/"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:hatheekshana@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <div class="social-icons animate-text-delay-3">
+                        <a href="https://github.com/theekify" class="social-icon" data-tooltip="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/theek/" class="social-icon" data-tooltip="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:hatheekshana@gmail.com" class="social-icon" data-tooltip="Email Me">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="home-image">
-                    <img src="image.png" alt="Profile Image">
+                <div class="home-image animate-image">
+                    <div class="image-wrapper">
+                        <img src="image.png" alt="Profile Image">
+                        <div class="image-overlay"></div>
+                    </div>
                 </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="scroll-text">Scroll Down</div>
             </div>
         </section>
 
         <!-- About Section -->
         <section id="about" class="section">
             <div class="section-content">
-                <h2>About Me</h2>
-                <p>Hey, I’m a Software Engineering undergraduate who loves creating things that look good and work even better. I’m all about front-end development, UI/UX design, and AI, always looking for ways to make technology feel more intuitive and interactive.
-
-                    I started with web development, but my curiosity pulled me into AI and machine learning, where I get to explore how smart systems can enhance user experiences. Now, I’m constantly learning and experimenting, trying to blend creativity with functionality.
+                <h2 class="reveal-text section-title">About Me</h2>
+                <div class="about-content">
+                    <p class="reveal-text">Hey, I'm a Software Engineering undergraduate who loves creating things that look good and work even better. I'm all about front-end development, UI/UX design, and AI always looking for ways to make technology feel more intuitive and interactive.</p>
+                    <p class="reveal-text">I started with web development, but my curiosity pulled me into AI and machine learning, where I get to explore how smart systems can enhance user experiences. Now, I'm constantly learning and experimenting, trying to blend creativity with functionality.</p>
+                    <p class="reveal-text">When I'm not coding, you'll probably find me listening to music, gaming or binge-watching movies.</p>
                     
-                    When I’m not coding, you’ll probably find me gaming, geeking out over new tech, or getting lost in a good sci-fi story.</p>g
+                    <div class="social-links reveal-text">
+                        <a href="https://www.instagram.com/theek.aka/" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                            <span>Follow me on Instagram</span>
+                        </a>
+                        <a href="https://open.spotify.com/user/3l1ekodxo51gm68xn1v6ig54t?si=e5a730376523407f" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-spotify"></i>
+                            <span>Check out my Spotify</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-divider">
+                <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                    <path d="M0,0 C720,120 1440,0 1440,0 L1440,120 L0,120 Z" fill="currentColor"></path>
+                </svg>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="section">
             <div class="section-content">
-                <h2>Projects</h2>
+                <h2 class="reveal-text section-title">Projects</h2>
                 <div class="projects-grid">
-                    <div class="project-card">
+                    <div class="project-card reveal-item tilt-card">
                         <div class="project-image">
-                            <img src="https://placehold.co/600x400/333/FFF?text=Project+1" alt="Project 1">
+                            <img src="/portfolio/portfolio/projects/hiredly.png" alt="Project 1">
+                            <div class="project-overlay">
+                                <div class="project-overlay-content">
+                                    <h3>Job marketplace platform</h3>
+                                    <p>Click to see details</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
-                            <h3>Project 1</h3>
-                            <p>A brief description of your project goes here. Explain what it does and what technologies you used.</p>
-                            <a href="project-detail.html" class="btn secondary-btn project-btn">
-                                See More
+                            <h3>Job marketplace platform</h3>
+                            <p>A two-sided marketplace inspired by Fiverr that connects talent with opportunity. The platform adapts seamlessly across all devices - desktop, tablet, and mobile!</p>
+                            <button class="btn secondary-btn project-btn" data-project="project1">
+                                <span class="btn-text">See More</span>
                                 <i class="fas fa-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card reveal-item tilt-card">
                         <div class="project-image">
-                            <img src="https://placehold.co/600x400/333/FFF?text=Project+2" alt="Project 2">
+                            <img src="/portfolio/portfolio/projects/chatbot.png" alt="Project 2">
+                            <div class="project-overlay">
+                                <div class="project-overlay-content">
+                                    <h3>Project 2</h3>
+                                    <p>Click to see details</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
-                            <h3>Project 2</h3>
-                            <p>A brief description of your project goes here. Explain what it does and what technologies you used.</p>
-                            <a href="project-detail.html" class="btn secondary-btn project-btn">
-                                See More
+                            <h3>ChatBot with gemini api</h3>
+                            <p>A sleek AI chatbot using the Gemini API for real-time interactions.</p>
+                            <button class="btn secondary-btn project-btn" data-project="project2">
+                                <span class="btn-text">See More</span>
                                 <i class="fas fa-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="view-all-container">
-                    <a href="projects.html" class="btn primary-btn view-all-btn">
-                        View All Projects
+                <div class="view-all-container reveal-item">
+                    <a href="projects.html" class="btn primary-btn view-all-btn magnetic-button">
+                        <span class="btn-text">View All Projects</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+            </div>
+            <div class="section-divider">
+                <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                    <path d="M0,0 C720,120 1440,0 1440,0 L1440,120 L0,120 Z" fill="currentColor"></path>
+                </svg>
             </div>
         </section>
 
         <!-- Skills Section -->
         <section id="skills" class="section">
             <div class="section-content">
-                <h2>Skills</h2>
+                <h2 class="reveal-text section-title">Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-category">
+                    <div class="skill-category reveal-item">
                         <div class="skill-icon">
                             <i class="fas fa-code"></i>
                         </div>
                         <h3>Frontend</h3>
                         <p>HTML, CSS, JavaScript, React</p>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress" data-progress="90"></div>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category reveal-item">
                         <div class="skill-icon">
                             <i class="fas fa-server"></i>
                         </div>
                         <h3>Backend</h3>
                         <p>Node.js, C#, Java, .NET</p>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress" data-progress="85"></div>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category reveal-item">
                         <div class="skill-icon">
                             <i class="fas fa-database"></i>
                         </div>
                         <h3>Databases</h3>
                         <p>SQL, MongoDB</p>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress" data-progress="80"></div>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category reveal-item">
                         <div class="skill-icon">
                             <i class="fas fa-code-branch"></i>
                         </div>
                         <h3>Version Control</h3>
                         <p>GitHub</p>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress" data-progress="95"></div>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category reveal-item">
                         <div class="skill-icon">
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <h3>Languages</h3>
                         <p>Python, Java, C, C#</p>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress" data-progress="88"></div>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category reveal-item">
                         <div class="skill-icon">
                             <i class="fas fa-globe"></i>
                         </div>
                         <h3>Other</h3>
                         <p>UI/UX Design, Prompt engineering</p>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress" data-progress="75"></div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="section-divider">
+                <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                    <path d="M0,0 C720,120 1440,0 1440,0 L1440,120 L0,120 Z" fill="currentColor"></path>
+                </svg>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="section">
             <div class="section-content contact-content">
-                <h2>Get In Touch</h2>
-                <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-                <a href="mailto:hatheekshana@gmail.com" class="btn primary-btn contact-btn">Contact Me</a>
+                <h2 class="reveal-text section-title">Get In Touch</h2>
+                <p class="reveal-text">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+                <a href="mailto:hatheekshana@gmail.com" class="btn primary-btn contact-btn reveal-item magnetic-button">
+                    <span class="btn-text">Contact Me</span>
+                    <i class="fas fa-paper-plane"></i>
+                </a>
             </div>
         </section>
     </main>
 
+    <!-- Project Modals -->
+    <div class="modal-container" id="project1Modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Job marketplace platform</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-content">
+                <div class="modal-image">
+                    <img src="/portfolio/portfolio/projects/hiredly.png" alt="Project 1">
+                </div>
+                <div class="modal-details">
+                    <h3>Overview</h3>
+                    <p>a two-sided marketplace inspired by Fiverr that connects talent with opportunity. The platform adapts seamlessly across all devices - desktop, tablet, and mobile!</p>
+                    
+                    <h3>Technologies Used</h3>
+                    <ul class="tech-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                        
+                    </ul>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Responsive design for all devices</li>
+                        <li>User authentication and authorization</li>
+                        <li>Real-time data updates</li>
+                        <li>Interactive UI elements</li>
+                    </ul>
+                    
+                    <div class="modal-links">
+                        <a href="https://github.com/theekify/hiredly" class="btn secondary-btn magnetic-button">
+                            <i class="fab fa-github"></i> <span class="btn-text">View Code</span>
+                        </a>
+                        <a href="https://hiredly.fwh.is/?i=1" class="btn primary-btn magnetic-button">
+                            <i class="fas fa-external-link-alt"></i> <span class="btn-text">Live Demo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container" id="project2Modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>ChatBot with gemini api</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-content">
+                <div class="modal-image">
+                    <img src="/portfolio/portfolio/projects/chatbot.png" alt="Project 2">
+                </div>
+                <div class="modal-details">
+                    <h3>Overview</h3>
+                    <p>A ChatBot built using the Gemini API, features a clean and minimalistic UI with a modern chat interface. It allows users to interact with AI by sending and receiving messages in real time, with a smooth and intuitive design for seamless communication.</p>
+                    
+                    <h3>Technologies Used</h3>
+                    <ul class="tech-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Gemini api</li>
+                       
+                    </ul>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Real-time AI chat interaction</li>
+                        <li>Minimalistic and modern UI</li>
+                        <li>Voice input support</li>
+                        <li>Smooth user experience with quick responses</li>
+                    </ul>
+                    
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti canvas for easter egg -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
