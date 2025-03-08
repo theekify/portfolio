@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Under Construction - Theekshana Akalanka</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        :root {
+            --background: #ffffff;
+            --foreground: #1a1a1a;
+            --border-light: rgba(0, 0, 0, 0.1);
+            --text-muted: #555;
+            --accent-color: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Hide scrollbar */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Hide default cursor when custom cursor is active */
+        @media (min-width: 768px) {
+            body {
+                cursor: none;
+            }
+            a, button {
+                cursor: none;
+            }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background-color 0.3s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--accent-color);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+            mix-blend-mode: difference;
+        }
+
+        /* Cursor hover effects */
+        .link-hover .cursor {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: #fff;
+        }
+
+        .link-hover .cursor-follower {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0.5;
+        }
+
+        .logo {
+            position: absolute;
+            left: 2rem;
+            top: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .logo svg {
+            width: 20px;
+            height: 20px;
+            animation: rotate 10s linear infinite;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 600px;
+            margin-left: 10%;
+        }
+
+        .illustration {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .construction-text {
+            display: inline-block;
+            margin-left: 0.5rem;
+            animation: wobble 1.5s ease-in-out infinite;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s 0.2s forwards;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s 0.4s forwards;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-primary {
+            background-color: var(--foreground);
+            color: var(--background);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s 0.6s forwards;
+        }
+
+        .social-links a {
+            color: var(--foreground);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.7;
+            transform: scale(1.2);
+        }
+
+        .social-links a:active {
+            transform: scale(0.9);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            width: 40px;
+            height: 80px;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            transition: transform 0.2s;
+            z-index: 10;
+        }
+
+        .scroll-indicator:hover {
+            transform: scale(1.1);
+        }
+
+        .scroll-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--foreground);
+            border-radius: 50%;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+
+        /* Particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--foreground);
+            opacity: 0.1;
+        }
+
+        /* Game container */
+        .game-container {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .game-container.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .game-ui {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .game-stats {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        .game-target {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--foreground);
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .game-target:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .game-target:active {
+            transform: translate(-50%, -50%) scale(0.95);
+        }
+
+        /* SVG Animation */
+        .svg-animation {
+            opacity: 0.3;
+            width: 300px;
+            height: 300px;
+        }
+
+        .construction-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            opacity: 0.3;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Mouse followers */
+        .mouse-follower {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: var(--foreground);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 100;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .mouse-follower {
+                display: block;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes wobble {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(5deg);
+            }
+            75% {
+                transform: rotate(-5deg);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(4px);
+            }
+            50% {
+                transform: translateY(16px);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        @keyframes drawCircle {
+            from {
+                stroke-dashoffset: 283;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes rotatePath {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotatePathReverse {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .content {
+                margin-left: 0;
+                margin-top: 2rem;
+                text-align: center;
+            }
+            
+            .buttons {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .logo {
+                left: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .illustration {
+                margin-top: 2rem;
+            }
+
+            .svg-animation {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <div class="particles-container"></div>
+    
+    <div class="mouse-follower" id="follower1"></div>
+    <div class="mouse-follower" id="follower2"></div>
+    <div class="mouse-follower" id="follower3"></div>
+    
+    <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="8" rx="1"></rect>
+            <path d="M17 14v7"></path>
+            <path d="M7 14v7"></path>
+            <path d="M17 3v3"></path>
+            <path d="M7 3v3"></path>
+            <path d="M10 14L2 14"></path>
+            <path d="M22 14L14 14"></path>
+        </svg>
+    </div>
+    
+    <div class="container">
+        <div class="content">
+            <h1>This page is under <span class="construction-text">construction.</span></h1>
+            <p>Meanwhile, have some fun with the interactive elements on this page!</p>
+            
+            <div class="buttons">
+                <button class="btn btn-primary" id="game-btn">Play a Game</button>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="illustration">
+            <div id="animation-container">
+                <svg class="svg-animation" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="283" stroke-dashoffset="283"></circle>
+                    <g class="rotating-path">
+                        <path d="M20,50 L80,50 M50,20 L50,80" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="120" stroke-dashoffset="120"></path>
+                    </g>
+                    <g class="rotating-path-reverse">
+                        <path d="M30,30 L70,70 M30,70 L70,30" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="120" stroke-dashoffset="120"></path>
+                    </g>
+                </svg>
+                
+                <div class="construction-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="6" width="20" height="8" rx="1"></rect>
+                        <path d="M17 14v7"></path>
+                        <path d="M7 14v7"></path>
+                        <path d="M17 3v3"></path>
+                        <path d="M7 3v3"></path>
+                        <path d="M10 14L2 14"></path>
+                        <path d="M22 14L14 14"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="game-container" id="game-container">
+                <div class="game-ui" id="game-ui">
+                    <div id="game-result" style="display: none;">
+                        <p class="game-score-text">Game Over!</p>
+                        <p>Your score: <span id="final-score">0</span></p>
+                    </div>
+                    <button class="btn btn-primary" id="start-game">Play Mini Game</button>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">Click the circles as fast as you can!</p>
+                </div>
+                <div class="game-stats" id="game-stats" style="display: none;">
+                    <div>Score: <span id="score">0</span></div>
+                    <div>Time: <span id="time">15</span>s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="scroll-indicator">
+        <div class="scroll-dot"></div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const body = document.body;
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        const gameBtn = document.getElementById('game-btn');
+        const gameContainer = document.getElementById('game-container');
+        const animationContainer = document.getElementById('animation-container');
+        const gameUI = document.getElementById('game-ui');
+        const startGameBtn = document.getElementById('start-game');
+        const gameStats = document.getElementById('game-stats');
+        const scoreElement = document.getElementById('score');
+        const timeElement = document.getElementById('time');
+        const gameResult = document.getElementById('game-result');
+        const finalScore = document.getElementById('final-score');
+        const followers = [
+            document.getElementById('follower1'),
+            document.getElementById('follower2'),
+            document.getElementById('follower3')
+        ];
+        const particlesContainer = document.querySelector('.particles-container');
+        const svgCircle = document.querySelector('.svg-animation circle');
+        const rotatingPath = document.querySelector('.rotating-path');
+        const rotatingPathReverse = document.querySelector('.rotating-path-reverse');
+        const links = document.querySelectorAll('a, button');
+
+        // Initialize SVG animations
+        svgCircle.style.animation = 'drawCircle 2s forwards infinite';
+        rotatingPath.style.animation = 'rotatePath 8s linear infinite';
+        rotatingPathReverse.style.animation = 'rotatePathReverse 8s linear infinite';
+
+        // Variables
+        let isGameActive = false;
+        let gameScore = 0;
+        let gameTime = 15;
+        let gameTimer;
+        let currentTarget = null;
+        let mousePosition = { x: 0, y: 0 };
+        let isPointer = false;
+
+        // Create particles
+        function createParticles() {
+            particlesContainer.innerHTML = '';
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 10 + 5;
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight;
+                const duration = Math.random() * 5 + 5;
+                const delay = Math.random() * 5;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+                particle.style.opacity = '0';
+                
+                particlesContainer.appendChild(particle);
+                
+                // Animate particle
+                setTimeout(() => {
+                    particle.style.transition = `transform ${duration}s linear, opacity ${duration}s ease-in-out`;
+                    particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${-Math.random() * 200 - 100}px)`;
+                    particle.style.opacity = '0.1';
+                    
+                    setTimeout(() => {
+                        particle.style.opacity = '0';
+                        
+                        // Recreate particle after animation
+                        setTimeout(() => {
+                            particlesContainer.removeChild(particle);
+                            createParticle();
+                        }, duration * 1000);
+                    }, duration * 500);
+                }, delay * 1000);
+            }
+        }
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 10 + 5;
+            const startX = Math.random() * window.innerWidth;
+            const startY = Math.random() * window.innerHeight;
+            const duration = Math.random() * 5 + 5;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${startX}px`;
+            particle.style.top = `${startY}px`;
+            particle.style.opacity = '0';
+            
+            particlesContainer.appendChild(particle);
+            
+            // Animate particle
+            setTimeout(() => {
+                particle.style.transition = `transform ${duration}s linear, opacity ${duration}s ease-in-out`;
+                particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${-Math.random() * 200 - 100}px)`;
+                particle.style.opacity = '0.1';
+                
+                setTimeout(() => {
+                    particle.style.opacity = '0';
+                    
+                    // Recreate particle after animation
+                    setTimeout(() => {
+                        particlesContainer.removeChild(particle);
+                        createParticle();
+                    }, duration * 1000);
+                }, duration * 500);
+            }, 0);
+        }
+
+        // Custom cursor
+        function updateCursor(e) {
+            mousePosition.x = e.clientX;
+            mousePosition.y = e.clientY;
+            
+            // Update cursor position
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            
+            // Update cursor follower with slight delay
+            setTimeout(() => {
+                cursorFollower.style.left = `${e.clientX}px`;
+                cursorFollower.style.top = `${e.clientY}px`;
+            }, 80);
+            
+            // Update mouse followers with delay
+            updateFollowers();
+        }
+
+        // Update mouse followers
+        function updateFollowers() {
+            followers.forEach((follower, index) => {
+                setTimeout(() => {
+                    const angle = (index + 1) * Math.PI / 6;
+                    const x = mousePosition.x + Math.sin(angle) * 20;
+                    const y = mousePosition.y + Math.cos(angle) * 20;
+                    
+                    follower.style.transform = `translate(${x - 2}px, ${y - 2}px)`;
+                }, index * 50);
+            });
+        }
+
+        // Link hover effects
+        function addLinkHoverEffects() {
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    body.classList.add('link-hover');
+                });
+                
+                link.addEventListener('mouseleave', () => {
+                    body.classList.remove('link-hover');
+                });
+            });
+        }
+
+        // Game functions
+        function toggleGame() {
+            if (gameContainer.style.display === 'none' || !gameContainer.classList.contains('active')) {
+                gameContainer.classList.add('active');
+                animationContainer.style.display = 'none';
+                gameBtn.textContent = 'Hide Game';
+            } else {
+                gameContainer.classList.remove('active');
+                animationContainer.style.display = 'block';
+                gameBtn.textContent = 'Play a Game';
+                endGame();
+            }
+        }
+
+        function startGame() {
+            isGameActive = true;
+            gameScore = 0;
+            gameTime = 15;
+            
+            scoreElement.textContent = gameScore;
+            timeElement.textContent = gameTime;
+            
+            gameUI.style.display = 'none';
+            gameStats.style.display = 'flex';
+            gameResult.style.display = 'none';
+            
+            createTarget();
+            
+            gameTimer = setInterval(() => {
+                gameTime--;
+                timeElement.textContent = gameTime;
+                
+                if (gameTime <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function endGame() {
+            isGameActive = false;
+            clearInterval(gameTimer);
+            
+            if (currentTarget) {
+                currentTarget.remove();
+                currentTarget = null;
+            }
+            
+            gameStats.style.display = 'none';
+            gameUI.style.display = 'flex';
+            
+            if (gameScore > 0) {
+                gameResult.style.display = 'block';
+                finalScore.textContent = gameScore;
+                startGameBtn.textContent = 'Play Again';
+            }
+        }
+
+        function createTarget() {
+            if (!isGameActive) return;
+            
+            if (currentTarget) {
+                currentTarget.remove();
+            }
+            
+            const target = document.createElement('div');
+            target.classList.add('game-target');
+            
+            const x = Math.random() * 80 + 10; // 10-90% of width
+            const y = Math.random() * 80 + 10; // 10-90% of height
+            
+            target.style.left = `${x}%`;
+            target.style.top = `${y}%`;
+            
+            target.addEventListener('click', hitTarget);
+            
+            gameContainer.appendChild(target);
+            currentTarget = target;
+            
+            // Animate target appearance
+            target.style.transform = 'translate(-50%, -50%) scale(0)';
+            setTimeout(() => {
+                target.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 10);
+        }
+
+        function hitTarget() {
+            gameScore++;
+            scoreElement.textContent = gameScore;
+            createTarget();
+        }
+
+        // Event listeners
+        document.addEventListener('mousemove', updateCursor);
+        gameBtn.addEventListener('click', toggleGame);
+        startGameBtn.addEventListener('click', startGame);
+
+        // Initialize
+        createParticles();
+        addLinkHoverEffects();
+    </script>
+</body>
+</html>
