@@ -310,6 +310,55 @@ main {
     transform: translateY(0);
 }
 
+/* Update section backgrounds for more visibility */
+.section:nth-child(even) {
+    background-color: rgba(249, 250, 251, 0.9);
+  }
+  
+  #skills {
+    background-color: rgba(249, 250, 251, 0.95);
+  }
+  
+  .contact-content {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Update skill cards without progress bars */
+  .skill-category {
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .skill-category:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skill-category p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: auto;
+  }
+  
+  /* Remove progress bar related styles */
+  .skill-progress-container,
+  .skill-progress {
+    display: none;
+  }
+  
+  
+
 /* Home Section */
 .home-section {
     min-height: 100vh;
