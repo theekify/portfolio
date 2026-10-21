@@ -247,15 +247,6 @@ h1,h2,h3{font-weight:400}
   margin-right:2px;
 }
 .logo span{color:var(--yellow);text-shadow:2px 2px 0 var(--ink)}
-.issue-box{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:34px;padding:4px 10px;
-  border:3px solid var(--ink);
-  background:var(--white);
-  box-shadow:3px 3px 0 var(--ink);
-  font-size:9px;letter-spacing:.1em;
-  white-space:nowrap;
-}
 .main-nav{
   display:flex;align-items:center;gap:clamp(12px,1.8vw,25px);
   margin-left:auto;
@@ -1486,7 +1477,6 @@ h1,h2,h3{font-weight:400}
   :root{--pad:16px}
   .masthead-in{min-height:64px;gap:9px}
   .logo{font-size:30px}
-  .issue-box{font-size:8px;padding:3px 7px;min-height:30px;box-shadow:2px 2px 0 var(--ink)}
   .menu-btn{font-size:18px;min-height:38px;padding:7px 10px;gap:6px;box-shadow:3px 3px 0 var(--ink)}
   .menu-lines{width:14px}
   .hero-news{align-items:flex-start}
@@ -1561,7 +1551,6 @@ h1,h2,h3{font-weight:400}
 }
 
 @media (max-width:380px){
-  .issue-box{display:none}
   .logo{font-size:29px}
   .hero-name{font-size:52px}
   .hero-stamp{font-size:12px;padding:5px 8px}
@@ -1589,7 +1578,6 @@ h1,h2,h3{font-weight:400}
 <header class="masthead" id="hud">
   <div class="wrap masthead-in">
     <a class="logo" href="#top" data-go="top" aria-label="Theekshana Akalanka — back to the cover">THEEKSHANA<span>!</span></a>
-    <span class="issue-box mono">No. 01</span>
 
     <nav class="main-nav" aria-label="Sections">
       <a href="#about" data-go="about" data-nav="about">About</a>
